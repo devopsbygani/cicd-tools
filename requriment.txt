@@ -1,5 +1,5 @@
 # what are we doing?
-* creating  a 2 ec2 instances (jenkins,jenkins-agent) instance type: t3.small, storage : 50 gb. (terrafrom)
+* creating  a 2 ec2 instances (jenkins,jenkins-agent) instance type: t3.small, storage : 50 gb, create rote53 records (terrafrom)
 * after creating instance, pratitioning the disk. (shell scripting)
 * installing jenkins in instance jenkins.
 * installing jdk in jenkins-agent
