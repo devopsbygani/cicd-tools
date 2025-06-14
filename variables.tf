@@ -4,11 +4,11 @@ variable "servers" {
 }
 
 variable "common_tags" {
-
+    default = " "
 }
 
 variable "server_tags" {
-
+    default = " "
 }
 
 variable "sg-id"{
