@@ -4,11 +4,11 @@ module "jenkins" {
   name = var.servers[0]
   ami = data.aws_ami.joindevops.id
   instance_type          = "t3.small"
-  vpc_security_group_ids = [local.sg_id]
+  vpc_security_group_ids = [var.sg_id]
   user_data = file("jenkins.sh")
   tags = merge(var.common_tags,var.server_tags,
   {
-    Name = var.servers[count.index[0]]
+    Name = var.servers[0]
   }
   )
   root_block_device = [
@@ -26,11 +26,11 @@ module "jenkins_agent" {
   name = var.servers[1]
   ami = data.aws_ami.joindevops.id
   instance_type          = "t3.small"
-  vpc_security_group_ids = [local.sg_id]
+  vpc_security_group_ids = [var.sg_id]
   user_data = file("jenkins_agent.sh")
   tags = merge(var.common_tags,var.server_tags,
   {
-    Name = var.servers[count.index[1]]
+    Name = var.servers[1]
   }
   )
   root_block_device = [
