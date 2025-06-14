@@ -1,6 +1,5 @@
 module "jenkins" {
   source  = "terraform-aws-modules/ec2-instance/aws"  #open source module for instance creation.
-  count = 1
   name = var.servers[0]
   ami = data.aws_ami.joindevops.id
   instance_type          = "t3.small"
@@ -22,7 +21,6 @@ module "jenkins" {
 
 module "jenkins_agent" {
   source  = "terraform-aws-modules/ec2-instance/aws"  #open source module for instance creation.
-  count = 1
   name = var.servers[1]
   ami = data.aws_ami.joindevops.id
   instance_type          = "t3.small"
@@ -53,7 +51,9 @@ module "records" {
       name    = "jenkins"
       type    = "A"
       ttl     = 1
-      records = [ module.jenkins.public_ip ]
+      records = [
+        module.jenkins.public_ip
+      ]
       allow_overwrite = true
       
     },
@@ -62,7 +62,9 @@ module "records" {
       name    = "jenkins-agent"
       type    = "A"
       ttl     = 1
-      records = [ module.jenkins_agent.private_ip ]
+      records = [
+        module.jenkins_agent.private_ip
+      ]
       allow_overwrite = true
 
     }

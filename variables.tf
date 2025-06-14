@@ -4,17 +4,20 @@ variable "servers" {
 }
 
 variable "common_tags" {
-    default = " "
+    default = {
+        
+    }
 }
 
 variable "server_tags" {
-    default = " "
+    default = {
+        }
 }
 
-variable "sg-id"{
+variable "sg_id"{
     default ="sg-077917637fc069d1f"
 }
 
-variable "zone-name" {
+variable "zone_name" {
     default = "devgani.online"
 }
