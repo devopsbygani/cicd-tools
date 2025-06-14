@@ -1,7 +1,7 @@
 module "jenkins" {
   source  = "terraform-aws-modules/ec2-instance/aws"  #open source module for instance creation.
   count = 1
-  name = var.servers[count.index[0]]
+  name = var.servers[0]
   ami = data.aws_ami.joindevops.id
   instance_type          = "t3.small"
   vpc_security_group_ids = [local.sg_id]
@@ -23,7 +23,7 @@ module "jenkins" {
 module "jenkins_agent" {
   source  = "terraform-aws-modules/ec2-instance/aws"  #open source module for instance creation.
   count = 1
-  name = var.servers[count.index[1]]
+  name = var.servers[1]
   ami = data.aws_ami.joindevops.id
   instance_type          = "t3.small"
   vpc_security_group_ids = [local.sg_id]
