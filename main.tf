@@ -42,7 +42,6 @@ module "jenkins_agent" {
   ]  
 }
 
-
 module "records" {
   source  = "terraform-aws-modules/route53/aws//modules/records"
   version = "~> 3.0"
@@ -55,6 +54,7 @@ module "records" {
       type    = "A"
       ttl     = 1
       records = [ module.jenkins.public_ip ]
+      allow_overwrite = true
       
     },
 
@@ -63,7 +63,8 @@ module "records" {
       type    = "A"
       ttl     = 1
       records = [ module.jenkins_agent.private_ip ]
-      
+      allow_overwrite = true
+
     }
   ]
 }
