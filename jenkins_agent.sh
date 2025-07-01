@@ -40,3 +40,8 @@ dnf install maven -y
 
 # Python for python projects
 dnf install python3.11 gcc python3-devel -y
+
+# disabling current version in nodejs  and enabling node version20.
+dnf module disable nodejs -y 
+dnf module enable nodejs:20 -y
+dnf install nodejs -y
